@@ -6,7 +6,7 @@ How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (u
 > thanks to [brechtb86](https://github.com/brechtb86)
 
 ## How to Use
-> you can fix data in **appsettings.ldap.json** and add them to your **appsettings.json** instead of hard coding ldap settings
+> first things first, you can correct and fill data in **appsettings.ldap.json** and add them to your **appsettings.json** instead of hard coding ldap settings
 
 ### Ldap Auth
 
