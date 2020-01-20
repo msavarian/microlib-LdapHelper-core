@@ -47,6 +47,7 @@ Install-Package MicroLib.LdapHelper.Core
 ```
 Install-Package MicroLib.LdapHelper.Core.Identity
 ```
+
 2. Config DI Container
 ```
     services.AddLdapIdentityHelperServices(new LdapSettings
@@ -70,9 +71,21 @@ Install-Package MicroLib.LdapHelper.Core.Identity
     
     services.AddIdentity<LdapIdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<LdapIdentityDbContext>()
-                .AddUserManager<LdapUserManager>()
-                .AddSignInManager<LdapSignInManager>()
+                .AddUserManager<LdapUserManager>() 
+                .AddSignInManager<LdapSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
+> for use **Ldap Authentication** with **Identity** you should implement the following classes
+> 
+> LdapUserManager.cs
+> LdapSignInManager.cs
+> LdapIdentityDbContext.cs
 
+Install following nuget packages for use Identity and implement above 3 classes
+```
+Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore Version="3.1.0"
+Install-Package Microsoft.AspNetCore.Identity.UI Version="3.1.0"
+Install-Package Microsoft.EntityFrameworkCore.SqlServer Version="3.1.0"
+Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
+```
 
