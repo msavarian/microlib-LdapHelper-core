@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description></Description>
+    <Authors>Mahmnoud Savarian</Authors>
+    <Copyright>Mahmoud Savarian C 2019</Copyright>
+    <Version>1.0.0</Version>
+    <PackageProjectUrl>https://github.com/msavarian/microlib-LdapHelper-core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/msavarian/microlib-LdapHelper-core</RepositoryUrl>
+    <Company>https://github.com/msavarian</Company>
+    <Product>MicroLib.LdapHelper.Core.Identity</Product>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MicroLib.LdapHelper.Core\MicroLib.LdapHelper.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.ldap.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+</Project>
