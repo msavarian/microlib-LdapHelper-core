@@ -77,9 +77,9 @@ Install-Package MicroLib.LdapHelper.Core.Identity
 ```
 > for use **Ldap Authentication** with **Identity** you should implement the following classes
 > 
-> LdapUserManager.cs
-> LdapSignInManager.cs
-> LdapIdentityDbContext.cs
+> LdapUserManager.cs 
+> LdapSignInManager.cs 
+> LdapIdentityDbContext.cs 
 
 Install following nuget packages for use Identity and implement above 3 classes
 ```
