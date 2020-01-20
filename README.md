@@ -41,7 +41,7 @@ Install-Package MicroLib.LdapHelper.Core
 
 ---
 
-### Ldap Auth + *AspNetIdentity*
+### Ldap Auth + *AspNetCoreIdentity*
 
  - Install the nuget package
 ```
