@@ -284,7 +284,8 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
             {
                 var domains = new List<string>();
                 domains.Add(_ldapSettings.DomainName);
-                domains.AddRange(_ldapSettings.UpnSuffixes);
+                if (_ldapSettings.UpnSuffixes.Count() > 0)
+                    domains.AddRange(_ldapSettings.UpnSuffixes);
 
                 foreach (var upn in domains)
                 {
