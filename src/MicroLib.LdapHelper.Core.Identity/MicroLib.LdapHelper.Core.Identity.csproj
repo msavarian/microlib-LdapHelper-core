@@ -1,22 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Authenticate with Ldap+Identity in .netstandard 2.1</Description>
+    <Description>Authenticate with Ldap+Identity in .core 3.1</Description>
     <Authors>Mahmnoud Savarian</Authors>
     <Copyright>Mahmoud Savarian C 2019</Copyright>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageProjectUrl>https://github.com/msavarian/microlib-LdapHelper-core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/msavarian/microlib-LdapHelper-core</RepositoryUrl>
     <Company>https://github.com/msavarian</Company>
     <Product>MicroLib.LdapHelper.Core.Identity</Product>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
