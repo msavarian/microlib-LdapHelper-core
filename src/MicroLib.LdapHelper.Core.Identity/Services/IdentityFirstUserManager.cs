@@ -1,5 +1,4 @@
-﻿using MicroLib.LdapHelper.Core.Identity;
-using MicroLib.LdapHelper.Core.Identity.Identity.Models;
+﻿using MicroLib.LdapHelper.Core.Identity.Identity.Models;
 using MicroLib.LdapHelper.Core.Models;
 using MicroLib.LdapHelper.Core.Services;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Identity
+namespace MicroLib.LdapHelper.Core.Identity.Services
 {
     public class IdentityFirstUserManager : UserManager<LdapIdentityUser>
     {
@@ -48,8 +47,8 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity
         }
         public override Task<LdapIdentityUser> FindByNameAsync(string userName)
         {
-            var ldapuser = (this._ldapService.GetUserByUserName(userName));
-            var localuser = (base.FindByNameAsync(userName)).Result;
+            var ldapuser = _ldapService.GetUserByUserName(userName);
+            var localuser = base.FindByNameAsync(userName).Result;
             if (ldapuser != null && localuser != null)
                 return Task.FromResult(ldapuser);
             return null;

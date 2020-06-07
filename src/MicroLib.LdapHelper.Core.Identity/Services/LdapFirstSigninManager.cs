@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Identity
+namespace MicroLib.LdapHelper.Core.Identity.Services
 {
     public class LdapFirstSigninManager : SignInManager<LdapIdentityUser>
     {
