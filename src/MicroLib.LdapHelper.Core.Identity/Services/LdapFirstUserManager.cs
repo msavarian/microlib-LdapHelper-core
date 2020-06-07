@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace MicroLib.LdapHelper.Core.Identity.Identity
 {
-    public class LdapUserManager : UserManager<LdapIdentityUser>
+    public class LdapFirstUserManager : UserManager<LdapIdentityUser>
     {
         private readonly ILdapBaseService<LdapIdentityUser> _ldapService;
 
-        public LdapUserManager(
+        public LdapFirstUserManager(
             ILdapBaseService<LdapIdentityUser> ldapService,
             IUserStore<LdapIdentityUser> store,
             IOptions<IdentityOptions> optionsAccessor,
@@ -28,7 +28,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity
             ILookupNormalizer keyNormalizer,
             IdentityErrorDescriber errors,
             IServiceProvider services,
-            ILogger<LdapUserManager> logger) :
+            ILogger<LdapFirstUserManager> logger) :
             base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
             _ldapService = ldapService;

@@ -11,7 +11,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity
     public class LdapSignInManager : SignInManager<LdapIdentityUser>
     {
         public LdapSignInManager(
-            LdapUserManager userManager,
+            LdapFirstUserManager userManager,
             IHttpContextAccessor contextAccessor,
             IUserClaimsPrincipalFactory<LdapIdentityUser> claimsFactory,
             IOptions<IdentityOptions> optionsAccessor,
@@ -23,16 +23,21 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName">userName souldn't has @domain.com</param>
+        /// <param name="password"></param>
+        /// <param name="rememberMe"></param>
+        /// <param name="lockOutOnFailure"></param>
+        /// <returns></returns>
         public override async Task<SignInResult> PasswordSignInAsync(string userName, string password, bool rememberMe, bool lockOutOnFailure)
         {
-            // userName souldn't has @domain.com
             var user = await UserManager.FindByNameAsync(userName);
-
             if (user == null)
             {
                 return SignInResult.Failed;
             }
-
             return await PasswordSignInAsync(user, password, rememberMe, lockOutOnFailure);
         }
     }
