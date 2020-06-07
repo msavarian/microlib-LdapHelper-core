@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace MicroLib.LdapHelper.Core.Identity.Identity
 {
-    public class LdapSignInManager : SignInManager<LdapIdentityUser>
+    public class IdentityFirstSigninManager : SignInManager<LdapIdentityUser>
     {
-        public LdapSignInManager(
-            LdapFirstUserManager userManager,
+        public IdentityFirstSigninManager(
+            IdentityFirstUserManager userManager,
             IHttpContextAccessor contextAccessor,
             IUserClaimsPrincipalFactory<LdapIdentityUser> claimsFactory,
             IOptions<IdentityOptions> optionsAccessor,
-            ILogger<LdapSignInManager> logger,
+            ILogger<IdentityFirstSigninManager> logger,
             IAuthenticationSchemeProvider schemes,
             IUserConfirmation<LdapIdentityUser> userConfirmation
             ) :
