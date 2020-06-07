@@ -7,6 +7,26 @@ How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (u
 
 ## How to Use
 > first things first, you can correct and fill data in **appsettings.ldap.json** and add them to your **appsettings.json** instead of hard coding ldap settings
+```
+{
+  "LdapSettings": {
+    "ServerName": "servername.domain.com",
+    "ServerPort": 389,
+    "UseSSL": false,
+    "Credentials": {
+      "DomainUserName": "domain.com\\username",
+      "Password": "xxxxxx"
+    },
+    "UpnSuffixes": "domain1.com,domain2.com",
+    "SearchBase": "DC=domain,DC=com",
+    "ContainerName": "DC=domain,DC=com",
+    "DomainName": "domain.com",
+    "DomainDistinguishedName": "DC=domain,DC=com"
+  }
+}
+```
+> you can bind above settings to the **MicroLib.LdapHelper.Core.Settings.LdapSettings.cs** class at startup.cs
+
 
 ### Ldap Auth
 
@@ -41,7 +61,7 @@ Install-Package MicroLib.LdapHelper.Core
 
 ---
 
-### Ldap Auth + *AspNetCoreIdentity*
+### Ldap Auth + *AspNetCoreIdentity* (Hybrid Auth)
 
  - Install the nuget package
 ```
@@ -78,12 +98,9 @@ Install-Package MicroLib.LdapHelper.Core.Identity
                 .AddSignInManager<LdapSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
-> for use **Ldap Authentication** with **Identity** you should implement the following classes
- - LdapUserManager.cs 
- - LdapSignInManager.cs   
- - LdapIdentityDbContext.cs   
 
-Install following nuget packages for use Identity and implement above 3 classes
+
+Install following nuget packages for use Identity
 ```
 Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore Version="3.1.0"
 Install-Package Microsoft.AspNetCore.Identity.UI Version="3.1.0"
