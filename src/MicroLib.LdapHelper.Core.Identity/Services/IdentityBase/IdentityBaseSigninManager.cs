@@ -1,4 +1,5 @@
 ﻿using MicroLib.LdapHelper.Core.Identity.Identity.Models;
+using MicroLib.LdapHelper.Core.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -6,24 +7,28 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Services
+namespace MicroLib.LdapHelper.Core.Identity.Services.IdentityBase
 {
-    public class LdapFirstSigninManager : SignInManager<LdapIdentityUser>
+    public class IdentityBaseSigninManager : SignInManager<IdentityUser>
     {
-        public LdapFirstSigninManager(
-            LdapFirstUserManager userManager,
+        private readonly ILdapBaseService<LdapIdentityUser> _ldapService;
+
+        public IdentityBaseSigninManager(
+            IdentityBaseUserManager userManager,
             IHttpContextAccessor contextAccessor,
-            IUserClaimsPrincipalFactory<LdapIdentityUser> claimsFactory,
+            IUserClaimsPrincipalFactory<IdentityUser> claimsFactory,
             IOptions<IdentityOptions> optionsAccessor,
-            ILogger<LdapFirstSigninManager> logger,
+            ILogger<IdentityBaseSigninManager> logger,
             IAuthenticationSchemeProvider schemes,
-            IUserConfirmation<LdapIdentityUser> userConfirmation
+            IUserConfirmation<IdentityUser> userConfirmation,
+            ILdapBaseService<LdapIdentityUser> ldapService
             ) :
             base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes, userConfirmation)
         {
+            _ldapService = ldapService;
         }
 
-        /// <summary>
+        /// <summary>f
         /// 
         /// </summary>
         /// <param name="userName">userName souldn't has @domain.com</param>

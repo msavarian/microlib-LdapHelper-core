@@ -37,7 +37,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity.Models
         public string DistinguishedName { get; set; }
 
         [NotMapped]
-        public string SamAccountName { get; set; }
+        public string SamAccountName { get; set; } = "";
 
         [NotMapped]
         public int SamAccountType { get; set; }
@@ -81,6 +81,9 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity.Models
 
         [NotMapped]
         public LdapAddress Address { get; set; }
+
+
+
 
         public override string SecurityStamp => Guid.NewGuid().ToString("D");
 

@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Services
+namespace MicroLib.LdapHelper.Core.Identity.Services.LdapFirst
 {
     public class LdapFirstUserManager : UserManager<LdapIdentityUser>
     {
@@ -62,7 +62,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
 
         public override Task<LdapIdentityUser> FindByNameAsync(string userName)
         {
-            var ldapuser=_ldapService.GetUserByUserName(userName);
+            var ldapuser = _ldapService.GetUserByUserName(userName);
 
             // we should fill Id with something
             // in IdentityFirstUserManager, I fill ldapUser.id with identityUser.Id (beacuse we want Identity Core can fetch user claims and roles)

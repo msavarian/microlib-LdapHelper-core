@@ -1,4 +1,5 @@
 ﻿using MicroLib.LdapHelper.Core.Identity.Identity.Models;
+using MicroLib.LdapHelper.Core.Identity.Services.LdapFirst;
 using MicroLib.LdapHelper.Core.Models;
 using MicroLib.LdapHelper.Core.Services;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Services
+namespace MicroLib.LdapHelper.Core.Identity.Services.IdentityFirst
 {
     public class IdentityFirstUserManager : UserManager<LdapIdentityUser>
     {
@@ -70,25 +71,25 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
         {
             get
             {
-                return (from u in base.Users
-                        join l in _ldapService.GetAllUsers().AsQueryable<LdapIdentityUser>()
-                        on u.UserName.ToLower() equals l.SamAccountName.ToLower()
+                return (from u in base.Users.ToList()
+                        join l in _ldapService.GetAllUsers().ToList()
+                        on u.UserName equals l.SamAccountName
                         select new LdapIdentityUser
                         {
                             Id = u.Id,
-                            UserName =u.UserName,
+                            UserName = u.UserName,
 
-                            DistinguishedName=l.DistinguishedName,
-                            DisplayName=l.DisplayName,
-                            Name=l.Name,
-                            FirstName = l.FirstName,
-                            LastName=l.LastName,
+                            DistinguishedName = string.IsNullOrEmpty(l.DistinguishedName) ? "" : l.DistinguishedName,
+                            DisplayName = string.IsNullOrEmpty(l.DisplayName) ? "" : l.DisplayName,
+                            Name = string.IsNullOrEmpty(l.Name) ? "" : l.Name,
+                            FirstName = string.IsNullOrEmpty(l.FirstName) ? "" : l.FirstName,
+                            LastName = string.IsNullOrEmpty(l.LastName) ? "" : l.LastName,
 
-                            UserPrincipalName=l.UserPrincipalName,
-                            SamAccountName =l.SamAccountName,
-                            Email = l.Email,
+                            UserPrincipalName = string.IsNullOrEmpty(l.UserPrincipalName) ? "" : l.UserPrincipalName,
+                            SamAccountName = string.IsNullOrEmpty(l.SamAccountName) ? "" : l.SamAccountName,
+                            Email = string.IsNullOrEmpty(l.Email) ? "" : l.Email,
 
-                        }).AsQueryable<LdapIdentityUser>();
+                        }).AsQueryable();
             }
         }
     }

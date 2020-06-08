@@ -6,16 +6,16 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Services
+namespace MicroLib.LdapHelper.Core.Identity.Services.LdapFirst
 {
-    public class IdentityFirstSigninManager : SignInManager<LdapIdentityUser>
+    public class LdapFirstSigninManager : SignInManager<LdapIdentityUser>
     {
-        public IdentityFirstSigninManager(
-            IdentityFirstUserManager userManager,
+        public LdapFirstSigninManager(
+            LdapFirstUserManager userManager,
             IHttpContextAccessor contextAccessor,
             IUserClaimsPrincipalFactory<LdapIdentityUser> claimsFactory,
             IOptions<IdentityOptions> optionsAccessor,
-            ILogger<IdentityFirstSigninManager> logger,
+            ILogger<LdapFirstSigninManager> logger,
             IAuthenticationSchemeProvider schemes,
             IUserConfirmation<LdapIdentityUser> userConfirmation
             ) :
