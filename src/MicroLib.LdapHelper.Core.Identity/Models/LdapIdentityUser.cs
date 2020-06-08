@@ -94,7 +94,11 @@ namespace MicroLib.LdapHelper.Core.Identity.Identity.Models
 
         public override string NormalizedEmail => this.EmailAddress;
 
-        public override string Id => Guid.NewGuid().ToString("D");
+        /// <summary>
+        /// I removed Guid.NewGuid().ToString("D"); and let the property to set by the real userId in identityDb
+        /// beacuse if this id set randomly, we could not get claims from Identitydb by UserId 
+        /// </summary>
+        public override string Id { get; set; } //=> Guid.NewGuid().ToString("D");
 
         public override string Email => this.EmailAddress;
     }

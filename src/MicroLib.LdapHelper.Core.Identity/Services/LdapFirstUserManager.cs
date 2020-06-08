@@ -42,7 +42,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
         /// <summary>
         /// Checks the given password agains the configured LDAP server.
         /// </summary>
-        /// <param name = "user" ></ param >
+        /// <param name = "user"></ param >
         /// < param name="password"></param>
         /// <returns></returns>
         public override async Task<bool> CheckPasswordAsync(LdapIdentityUser user, string password)
@@ -62,7 +62,14 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
 
         public override Task<LdapIdentityUser> FindByNameAsync(string userName)
         {
-            return Task.FromResult(_ldapService.GetUserByUserName(userName));
+            var ldapuser=_ldapService.GetUserByUserName(userName);
+
+            // we should fill Id with something
+            // in IdentityFirstUserManager, I fill ldapUser.id with identityUser.Id (beacuse we want Identity Core can fetch user claims and roles)
+            // but here, we don't care
+            ldapuser.Id = Guid.NewGuid().ToString("D");
+
+            return Task.FromResult(ldapuser);
         }
 
         public override async Task<IdentityResult> CreateAsync(LdapIdentityUser user, string password)
