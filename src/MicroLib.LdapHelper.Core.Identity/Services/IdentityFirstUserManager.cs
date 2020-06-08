@@ -63,7 +63,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
                 ldapuser.Id = localuser.Id;
                 return Task.FromResult(ldapuser);
             }
-            return null;
+            return Task.FromResult<LdapIdentityUser>(null);
         }
     }
 }
