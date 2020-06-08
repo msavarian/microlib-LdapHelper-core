@@ -65,5 +65,31 @@ namespace MicroLib.LdapHelper.Core.Identity.Services
             }
             return Task.FromResult<LdapIdentityUser>(null);
         }
+
+        public override IQueryable<LdapIdentityUser> Users
+        {
+            get
+            {
+                return (from u in base.Users
+                        join l in _ldapService.GetAllUsers().AsQueryable<LdapIdentityUser>()
+                        on u.UserName.ToLower() equals l.SamAccountName.ToLower()
+                        select new LdapIdentityUser
+                        {
+                            Id = u.Id,
+                            UserName =u.UserName,
+
+                            DistinguishedName=l.DistinguishedName,
+                            DisplayName=l.DisplayName,
+                            Name=l.Name,
+                            FirstName = l.FirstName,
+                            LastName=l.LastName,
+
+                            UserPrincipalName=l.UserPrincipalName,
+                            SamAccountName =l.SamAccountName,
+                            Email = l.Email,
+
+                        }).AsQueryable<LdapIdentityUser>();
+            }
+        }
     }
 }
