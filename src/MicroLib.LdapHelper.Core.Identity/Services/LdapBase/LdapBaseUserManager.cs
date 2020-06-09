@@ -11,13 +11,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MicroLib.LdapHelper.Core.Identity.Services.LdapFirst
+namespace MicroLib.LdapHelper.Core.Identity.Services.LdapBase
 {
-    public class LdapFirstUserManager : UserManager<LdapIdentityUser>
+    public class LdapBaseUserManager : UserManager<LdapIdentityUser>
     {
         private readonly ILdapBaseService<LdapIdentityUser> _ldapService;
 
-        public LdapFirstUserManager(
+        public LdapBaseUserManager(
             ILdapBaseService<LdapIdentityUser> ldapService,
             IUserStore<LdapIdentityUser> store,
             IOptions<IdentityOptions> optionsAccessor,
@@ -27,7 +27,7 @@ namespace MicroLib.LdapHelper.Core.Identity.Services.LdapFirst
             ILookupNormalizer keyNormalizer,
             IdentityErrorDescriber errors,
             IServiceProvider services,
-            ILogger<LdapFirstUserManager> logger) :
+            ILogger<LdapBaseUserManager> logger) :
             base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
             _ldapService = ldapService;
