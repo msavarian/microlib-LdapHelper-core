@@ -1,7 +1,7 @@
 # MicroLib.LdapHelper.Core
 How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (using the C# Novell LDAP library)
 
-> I Read following project and modified, fix and add some features to that and also upgrade that for work in .net standard 2.x+ and aspnetcore 3.x+
+> I modified, fix, add features, working on integrationg with identity-core and also upgrade that for work in .net standard 2.x+ and aspnetcore 3.x+
 > https://github.com/brechtb86/dotnet/tree/master/brechtbaekelandt.ldap
 > thanks to [brechtb86](https://github.com/brechtb86)
 
@@ -58,6 +58,7 @@ Install-Package MicroLib.LdapHelper.Core
     // in console apps
     services.AddOptions();
 ```
+> Inject ILdapBaseService<LdapUser> in your project and work with ldap directly
 
 ---
 
@@ -114,6 +115,7 @@ Install-Package MicroLib.LdapHelper.Core.Identity
                 .AddSignInManager<IdentityBaseSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
+> in both above ways, you can inject ILdapBaseService<LdapIdentityUser> in your project and work with ldap directly instead of UserManager and Identity
 
 Install following nuget packages for use Identity
 ```
