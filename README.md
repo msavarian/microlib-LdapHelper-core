@@ -88,17 +88,32 @@ Install-Package MicroLib.LdapHelper.Core.Identity
         DomainName = "domain.com",
         DomainDistinguishedName = "DC=domain,DC=com"
     });
-    
+```
+
+### I designed two way for Hybrid-Authentication (Ldap + Identity Core)
+
+1. the first way that I named it "LdapBase", and it means all users managment functionality will be by ActiveDirectory and we use IdentityCore just for Signing-in (security) and working with UserManager (but with the active directory repository)
+``` 
     services.AddIdentity<LdapIdentityUser, IdentityRole>(options =>
                 {
                 ///
                 })
                 .AddEntityFrameworkStores<LdapIdentityDbContext>()
-                .AddUserManager<LdapUserManager>() 
-                .AddSignInManager<LdapSignInManager>() 
+                .AddUserManager<LdapBaseUserManager>() 
+                .AddSignInManager<LdapBaseSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
-
+2. and the second way that I named it "IdentityBase", and you will able to work with IdentityCore as before, but the usernames should be same with Username in ActiveDirectory and also password in IdentityDb will not matter yet (the users passwords checks from ldap)
+``` 
+    services.AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                ///
+                })
+                .AddEntityFrameworkStores<LdapIdentityDbContext>()
+                .AddUserManager<IdentityBaseUserManager>() 
+                .AddSignInManager<IdentityBaseSignInManager>() 
+                .AddDefaultTokenProviders();
+```
 
 Install following nuget packages for use Identity
 ```
