@@ -1,18 +1,18 @@
 # MicroLib.LdapHelper.Core
 How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (using the C# Novell LDAP library)
 
-> I tried to rewrite (re-implementing) [this source code](https://github.com/brechtb86/dotnet/tree/master/brechtbaekelandt.ldap), thanks to [brechtb86](https://github.com/brechtb86). 
-> I add new features, upgrade that to .net standard 2.x+ and aspnetcore 3.x+ and also working on integrationg with identity-core
+> I tried to rewrite (re-implementing) [this source code](https://github.com/brechtb86/dotnet/tree/master/brechtbaekelandt.ldap), thanks to [brechtb86](https://github.com/brechtb86).
+> I add new features, upgrade that to .net standard 2.x and aspnetcore 3.x and also working on integration with identity-core
 
 ## Contents
 - [How to Use](#How-to-Use)
-  - [configuration data](#configuration-data)
-  - [use **Ldap** to authenticate user](#use-**Ldap**-to-authenticate-user)
-  - [use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-**Ldap-and-Identity**-to-authenticate-user-(Hybrid-Auth))
+  - [Configuration](#configuration)
+  - [Use **Ldap** to authenticate user](#use-**Ldap**-to-authenticate-user)
+  - [Use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-**Ldap-and-Identity**-to-authenticate-user-(Hybrid-Auth))
 
 ## How to Use
 
-### configuration data
+### Configuration
 > first things first, you can correct and fill data in **appsettings.ldap.json** and add them to your **appsettings.json** instead of hard coding ldap settings
 ```
 {
@@ -35,7 +35,7 @@ How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (u
 > you can bind above settings to the **MicroLib.LdapHelper.Core.Settings.LdapSettings.cs** class at startup.cs
 
 
-### use **Ldap** to authenticate user
+### Use **Ldap** to authenticate user
 
 1. Install the nuget package
 ```
@@ -69,7 +69,7 @@ Install-Package MicroLib.LdapHelper.Core
 
 ---
 
-### use **Ldap and Identity** to authenticate user (Hybrid Auth)
+### Use **Ldap and Identity** to authenticate user (Hybrid Auth)
 
  - Install the nuget package
 ```
