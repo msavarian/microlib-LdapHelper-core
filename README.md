@@ -43,7 +43,7 @@ Install-Package MicroLib.LdapHelper.Core
 ```
 2. Config DI Container
 ```
-    services.AddLdapHelperServices(new LdapSettings
+    services.**AddLdapHelperServices**(new LdapSettings
     {
         ServerName = "server.domain.com",
         ServerPort = 389,
@@ -65,7 +65,7 @@ Install-Package MicroLib.LdapHelper.Core
     // in console apps
     services.AddOptions();
 ```
-> Inject ILdapBaseService<LdapUser> in your project and work with ldap directly
+> Inject **ILdapBaseService<LdapUser>** in the class(login controller) and work with ldap directly
 
 ---
 
@@ -74,11 +74,17 @@ Install-Package MicroLib.LdapHelper.Core
  - Install the nuget package
 ```
 Install-Package MicroLib.LdapHelper.Core.Identity
+
+// also you should install following nuget packages for use Identity
+Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore Version="3.1.0"
+Install-Package Microsoft.AspNetCore.Identity.UI Version="3.1.0"
+Install-Package Microsoft.EntityFrameworkCore.SqlServer Version="3.1.0"
+Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
 ```
 
  - Config DI Container
 ```
-    services.AddLdapIdentityHelperServices(new LdapSettings
+    services.**AddLdapIdentityHelperServices**(new LdapSettings
     {
         ServerName = "server.domain.com",
         ServerPort = 389,
@@ -97,6 +103,7 @@ Install-Package MicroLib.LdapHelper.Core.Identity
         DomainDistinguishedName = "DC=domain,DC=com"
     });
 ```
+---
 
 ### I designed two way for Hybrid-Authentication (Ldap + Identity Core)
 
@@ -122,14 +129,7 @@ Install-Package MicroLib.LdapHelper.Core.Identity
                 .AddSignInManager<IdentityBaseSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
-> in both above ways, you can inject ILdapBaseService<LdapIdentityUser> in your project and work with ldap directly instead of UserManager and Identity
+> in both above ways, you can inject **ILdapBaseService<LdapIdentityUser>** in the class(login controller) and work with ldap directly instead of UserManager and Identity
 
-Install following nuget packages for use Identity
-```
-Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore Version="3.1.0"
-Install-Package Microsoft.AspNetCore.Identity.UI Version="3.1.0"
-Install-Package Microsoft.EntityFrameworkCore.SqlServer Version="3.1.0"
-Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
-```
 
 
