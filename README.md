@@ -1,13 +1,14 @@
 # MicroLib.LdapHelper.Core
 How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (using the C# Novell LDAP library)
 
-> I tried to rewrite (re-implementing) [this source code](https://github.com/brechtb86/dotnet/tree/master/brechtbaekelandt.ldap), thanks to [brechtb86](https://github.com/brechtb86) I fix bugs, add new features, upgrade that to .net standard 2.x+ and aspnetcore 3.x+ and also working on integrationg with identity-core
+> I tried to rewrite (re-implementing) [this source code](https://github.com/brechtb86/dotnet/tree/master/brechtbaekelandt.ldap), thanks to [brechtb86](https://github.com/brechtb86). 
+> I add new features, upgrade that to .net standard 2.x+ and aspnetcore 3.x+ and also working on integrationg with identity-core
 
 ## Contents
 - [How to Use](#How-to-Use)
-- [configuration data](#configuration-data)
-- [use **Ldap** to authenticate user](#use-**Ldap**-to-authenticate-user)
-- [use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-**Ldap-and-Identity**-to-authenticate-user-(Hybrid-Auth))
+  - [configuration data](#configuration-data)
+  - [use **Ldap** to authenticate user](#use-**Ldap**-to-authenticate-user)
+  - [use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-**Ldap-and-Identity**-to-authenticate-user-(Hybrid-Auth))
 
 ## How to Use
 
