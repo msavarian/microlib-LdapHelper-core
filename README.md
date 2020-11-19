@@ -7,8 +7,8 @@ How to Use Active Directory (via LDAP) in .NetStandard 2.x ASP.Net Core 3.x (usi
 ## Contents
 - [How to Use](#How-to-Use)
   - [Configuration](#configuration)
-  - [Use **Ldap** to authenticate user](#use-ldap-to-authenticate-user)
-  - [Use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-ldap-and-identity-to-authenticate-user-(Hybrid-Auth))
+  - [Use **Ldap** to authenticate the user](#use-ldap-to-authenticate-the-user)
+  - [Use **Ldap and Identity** to hybrid authenticate the user](#Use-**Ldap-and-Identity**-to-hybrid-authenticate-the-user)
 
 ## How to Use
 
@@ -35,7 +35,7 @@ How to Use Active Directory (via LDAP) in .NetStandard 2.x ASP.Net Core 3.x (usi
 > you can bind above settings to the **MicroLib.LdapHelper.Core.Settings.LdapSettings.cs** class at startup.cs
 
 
-### Use **Ldap** to authenticate user
+### Use **Ldap** to authenticate the user
 
 1. Install the nuget package
 ```
@@ -69,7 +69,7 @@ Install-Package MicroLib.LdapHelper.Core
 
 ---
 
-### Use **Ldap and Identity** to authenticate user (Hybrid Auth)
+### Use **Ldap and Identity** to hybrid authenticate the user
 
  - Install the nuget package
 ```
