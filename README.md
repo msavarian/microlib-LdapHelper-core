@@ -1,5 +1,5 @@
 # MicroLib.LdapHelper.Core
-How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (using the C# Novell LDAP library)
+How to Use Active Directory (via LDAP) in .NetStandard 2.x ASP.Net Core 3.x (using the C# Novell LDAP library)
 
 > I tried to rewrite (re-implementing) [this source code](https://github.com/brechtb86/dotnet/tree/master/brechtbaekelandt.ldap), thanks to [brechtb86](https://github.com/brechtb86).
 > I add new features, upgrade that to .net standard 2.x and aspnetcore 3.x and also working on integration with identity-core
@@ -7,8 +7,8 @@ How to Use Active Directory (via LDAP) in .NetStandard 2.x+ ASP.Net Core 3.x+ (u
 ## Contents
 - [How to Use](#How-to-Use)
   - [Configuration](#configuration)
-  - [Use **Ldap** to authenticate user](#use-**Ldap**-to-authenticate-user)
-  - [Use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-**Ldap-and-Identity**-to-authenticate-user-(Hybrid-Auth))
+  - [Use **Ldap** to authenticate user](#use-ldap-to-authenticate-user)
+  - [Use **Ldap and Identity** to authenticate user (Hybrid Auth)](#use-ldap-and-identity-to-authenticate-user-(Hybrid-Auth))
 
 ## How to Use
 
@@ -75,7 +75,7 @@ Install-Package MicroLib.LdapHelper.Core
 ```
 Install-Package MicroLib.LdapHelper.Core.Identity
 
-// also you should install following nuget packages for use Identity
+// also you need to install following nuget packages for use Identity
 Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore Version="3.1.0"
 Install-Package Microsoft.AspNetCore.Identity.UI Version="3.1.0"
 Install-Package Microsoft.EntityFrameworkCore.SqlServer Version="3.1.0"
@@ -108,7 +108,7 @@ Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
 
 ---
 
-### In this library there are two different way for Hybrid-Authentication (Ldap + Identity Core)
+### In this library there are two different ways for Hybrid-Authentication (Ldap + Identity Core)
 
 1. the first way that I named it "LdapBase", and it means all users managment functionality will be by ActiveDirectory. in this way we use IdentityCore just for Signing-in (security) and working with UserManager (but with the active directory repository)
 ``` 
