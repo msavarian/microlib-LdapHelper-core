@@ -43,7 +43,7 @@ Install-Package MicroLib.LdapHelper.Core
 ```
 2. Config DI Container
 ```
-    services.**AddLdapHelperServices**(new LdapSettings
+    services.AddLdapHelperServices(new LdapSettings
     {
         ServerName = "server.domain.com",
         ServerPort = 389,
@@ -84,7 +84,7 @@ Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
 
  - Config DI Container
 ```
-    services.**AddLdapIdentityHelperServices**(new LdapSettings
+    services.**AddLdapIdentityHelperServices(new LdapSettings
     {
         ServerName = "server.domain.com",
         ServerPort = 389,
@@ -103,11 +103,14 @@ Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
         DomainDistinguishedName = "DC=domain,DC=com"
     });
 ```
+
+> Inject **ILdapBaseService<LdapIdentityUser>** in the class(login controller) and work with ldap directly instead of UserManager and Identity
+
 ---
 
-### I designed two way for Hybrid-Authentication (Ldap + Identity Core)
+### In this library there are two different way for Hybrid-Authentication (Ldap + Identity Core)
 
-1. the first way that I named it "LdapBase", and it means all users managment functionality will be by ActiveDirectory and we use IdentityCore just for Signing-in (security) and working with UserManager (but with the active directory repository)
+1. the first way that I named it "LdapBase", and it means all users managment functionality will be by ActiveDirectory. in this way we use IdentityCore just for Signing-in (security) and working with UserManager (but with the active directory repository)
 ``` 
     services.AddIdentity<LdapIdentityUser, IdentityRole>(options =>
                 {
@@ -118,7 +121,8 @@ Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
                 .AddSignInManager<LdapBaseSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
-2. and the second way that I named it "IdentityBase", and you will able to work with IdentityCore as before, but the usernames should be same with Username in ActiveDirectory and also password in IdentityDb will not matter yet (the users passwords checks from ldap)
+
+2. the second way that I named it "IdentityBase", and you will able to work with IdentityCore as before, but the usernames in AspNetUsers table should be same with Username in ActiveDirectory and also password in IdentityDb will not matter yet (the users passwords checks from ldap)
 ``` 
     services.AddIdentity<IdentityUser, IdentityRole>(options =>
                 {
@@ -129,7 +133,6 @@ Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
                 .AddSignInManager<IdentityBaseSignInManager>() 
                 .AddDefaultTokenProviders();
 ```
-> in both above ways, you can inject **ILdapBaseService<LdapIdentityUser>** in the class(login controller) and work with ldap directly instead of UserManager and Identity
 
 
 
