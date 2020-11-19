@@ -84,7 +84,7 @@ Install-Package Microsoft.EntityFrameworkCore.Tools Version="3.1.0"
 
  - Config DI Container
 ```
-    services.**AddLdapIdentityHelperServices(new LdapSettings
+    services.AddLdapIdentityHelperServices(new LdapSettings
     {
         ServerName = "server.domain.com",
         ServerPort = 389,
